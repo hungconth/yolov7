@@ -267,7 +267,6 @@ def detect(save_img=False):
                 object_exists = False
                 for pt in center_points_cur_frame_copy:
                     distance = math.hypot(pt2[0] - pt[0], pt2[1] - pt[1])
-
                     # Nếu khoảng cách giữa đối tượng hiện tại với tối tượng ở khung hình trước <10 thì cho id = id đối tượng trước
                     if distance < 10:
                         tracking_objects[object_id] = pt
@@ -284,14 +283,16 @@ def detect(save_img=False):
             for pt in center_points_cur_frame:
                 tracking_objects[track_id] = pt
                 track_id += 1
+        Number_car = tracking_objects.size()
+
         for object_id, pt in tracking_objects.items():
             x_c, y_c = pt
+            cv2. 
             cv2.circle(im0s, (int(x_c), int(y_c)), 5, (0, 0, 255), -1)
             cv2.putText(im0s, str(object_id), (int(pt[0]),int(np.float32( pt[1] - 7))), 0, 1, (0, 0, 255), 2)
 
         print("Tracking objects")
         print(tracking_objects)
-
 
         print("CUR FRAME ")
         print(center_points_cur_frame)
